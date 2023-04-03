@@ -266,5 +266,39 @@ void LCD_Write_String(char *a)
 }
 
 
+#include <xc.h>
+#define _XTAL_FREQ 20000000
+
+
+
+void rotate_motor(){
+    PORTC = 0b00000001;
+    __delay_ms(100);
+    
+    PORTC = 0b00000010;
+    __delay_ms(100);
+    
+    PORTC = 0b00000011;
+    __delay_ms(100);
+    
+       
+    PORTC = 0b00000100;
+    __delay_ms(100);
+    
+    PORTC = 0b00000101;
+    __delay_ms(100);
+    
+    PORTC = 0b00000110;
+    __delay_ms(100);
+}
+void main(void) {
+    TRISC =0x00;
+    PORTC =0x00;
+    while(1)
+    {
+        rotate_motor();
+    }
+    return;
+}
 
 
